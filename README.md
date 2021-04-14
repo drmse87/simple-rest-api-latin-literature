@@ -1,5 +1,5 @@
-# Description
-Because of my Latin interest, I decided to create a Latin-inspired API containing classical Latin works and authors such as De Bello Gallico by Caesar and Cicero's Epistulae. The API is up and running (at least as of April 2020) at https://latin.sommarvind.tech. In retrospect, I would have wanted to add more data to the database. I would also have wanted to add a /user endpoint to get the current user's document. I would also have wanted to add a /user/webhooks store, to get a list of the current user's webhooks. I would also have used ASP.NET's Webhooks instead of writing my own webhook functionality. Finally, for the mapping done in the static ToModel and FromModel methods, I would have wanted to use AutoMapper instead.
+# Latin Works and Authors REST API
+Because of my Latin interest, I decided to create a Latin-inspired [ASP.NET Core WebAPI](https://asp.net) for classical Latin works and authors such as De Bello Gallico by Caesar and Cicero's Epistulae. The API is up and running (at least as of April 2021) at https://latin.sommarvind.tech.
 
 # Resources and endpoints
 ## Users
@@ -54,3 +54,6 @@ The project requires a Secrets.json file in project root with the key "SecurityK
 
 ## Testing
 Either manually at https://latin.sommarvind.tech, or by importing the Latin Works.postman_collection.json and running the collection runner.
+
+# Lessons learned
+In retrospect, I would have wanted to add more data to the database. I would also have wanted to add a /user endpoint to get the current user's document. I would also have wanted to add a /user/webhooks store, to get a list of the current user's webhooks. I would also have used ASP.NET's Webhooks instead of writing my own webhook functionality. Finally, for the mapping done in the static ToModel and FromModel methods, I would have wanted to use AutoMapper instead.
