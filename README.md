@@ -1,5 +1,5 @@
 # Latin Works and Authors REST API
-Latin-inspired [ASP.NET Core WebAPI](https://asp.net) for classical Latin works and authors such as De Bello Gallico by Caesar and Cicero's Epistulae. The API is up and running (at least as of April 2021) at https://latin.sommarvind.tech.
+[ASP.NET Core WebAPI](https://asp.net) for Latin works and authors such as De Bello Gallico by Caesar and Cicero's Epistulae. The API is up and running (at least as of April 2021) at https://latin.sommarvind.tech.
 
 # Resources and endpoints
 ## Users
