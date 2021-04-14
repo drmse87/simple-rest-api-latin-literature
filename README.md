@@ -3,30 +3,38 @@ Because of my Latin interest, I decided to create a Latin-inspired API containin
 
 # Resources and endpoints
 ## Users
-GET /api/v1/users (gets all users)
-GET /api/v1/users/:id (gets user by id)
-GET /api/v1/users/:id/works (gets works added by user by id)
-GET /api/v1/users/:id/authors (gets authors added by user by id)
-POST /api/v1/users (registers new user)
-POST /api/v1/users/login (login)
+| Method | Endpoint                  | Description                      |
+|--------|---------------------------|----------------------------------|
+| GET    | /api/v1/users             | Get all users.                   |
+| GET    | /api/v1/users/:id         | Get user by id.                  |
+| GET    | /api/v1/users/:id/works   | Get works added by user by id.   |
+| GET    | /api/v1/users/:id/authors | Get authors added by user by id. |
+| POST   | /api/v1/users             | Register new user.               |
+| POST   | /api/v1/users/login       | Login.                           |
 
 ## Latin Works
-GET /api/v1/works (gets all works)
-GET /api/v1/works/:id (gets work by id)
-POST /api/v1/works (adds new work)
-DELETE /api/v1/works/:id (deletes work by id)
-PUT /api/v1/works/:id (updates work by id)
+| Method | Endpoint          | Description        |
+|--------|-------------------|--------------------|
+| GET    | /api/v1/works     | Get all works.     |
+| GET    | /api/v1/works/:id | Get work by id.    |
+| POST   | /api/v1/works     | Add new work.      |
+| DELETE | /api/v1/works/:id | Delete work by id. |
+| PUT    | /api/v1/works/:id | Update work by id. |
 
 ## Latin Authors
-GET /api/v1/authors (gets all authors)
-GET /api/v1/authors/:id (gets author by id)
-GET /api/v1/authors/:id/works (gets works written by author by id)
-POST /api/v1/authors (adds new author)
-DELETE /api/v1/authors/:id (deletes author by id)
-PUT /api/v1/authors/:id (updates author by id)
+| Method | Endpoint                  | Description                |
+|--------|---------------------------|----------------------------|
+| GET    | /api/v1/authors           | Get all authors.           |
+| GET    | /api/v1/authors/:id       | Get author by id.          |
+| GET    | /api/v1/authors/:id/works | Get works by author by id. |
+| POST   | /api/v1/authors           | Add new author.            |
+| DELETE | /api/v1/authors/:id       | Delete author by id.       |
+| PUT    | /api/v1/authors/:id       | Update author by id.       |
 
 ## Webhooks
-POST /api/v1/webhooks (registers new webhook)
+| Method  | Endpoint          | Description          |
+|---------|-------------------|----------------------|
+| POST    | /api/v1/webhooks  | Register new webhook.|
 
 # Technical details
 ## HATEOAS
