@@ -1,0 +1,2482 @@
+{
+	"info": {
+		"_postman_id": "cdaa866f-eb19-423d-a2c8-941eab139c2d",
+		"name": "Latin Works",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Try before authorizing",
+			"item": [
+				{
+					"name": "Create Work",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 401\", () => {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomLoremWord}}\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"authorId\": {{$randomInt}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Webhook",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 401\", () => {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"callbackURL\": \"{{$randomUrl}}\",\r\n    \"event\": \"{{validWebhookEvent}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/webhooks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"webhooks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Author",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 401\", () => {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"praenomen\": \"{{$randomFirstName}}\",\r\n    \"nomen\": \"{{$randomFirstName}}\",\r\n    \"cognomen\": \"{{$randomLastName}}\",\r\n    \"period\": \"{{validPeriod}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Users (Register and Login)",
+			"item": [
+				{
+					"name": "Create User too short username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"us\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User too short password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const moment = require(\"moment\");\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"username\", jsonData.username);\r",
+									"pm.collectionVariables.set(\"userId\", jsonData.userId);\r",
+									"\r",
+									"pm.test(\"Should have status 201\", () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should have self link with UserId\", () => {\r",
+									"    const selfLink = jsonData._links.self;\r",
+									"    pm.expect(selfLink.href).to.include(jsonData.userId);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should have null last login date\", () => {\r",
+									"    pm.expect(jsonData.lastLoginDate).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be registered within last minute\", () => {\r",
+									"    const oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isRegisteredWithinLastMinute = moment(jsonData.registerDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isRegisteredWithinLastMinute).to.be.true\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login bad credentials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 401\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"password\": \"{{$randomPassword}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login bad username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 401\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login bad password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 401\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{$randomPassword}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"token\", jsonData.access_token);\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should contain access token\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.have.property(\"access_token\");\r",
+									"    pm.expect(jsonData.access_token).to.be.a(\"string\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an array of users\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"\r",
+									"    jsonData.forEach(user => {\r",
+									"        pm.expect(user).to.be.an(\"object\");\r",
+									"        pm.expect(user).to.not.have.property(\"password\");\r",
+									"        pm.expect(user.username).to.be.a(\"string\");\r",
+									"        pm.expect(user.userId).to.be.a(\"number\");\r",
+									"        pm.expect(user._links).to.have.property(\"self\");\r",
+									"    })\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return a user object\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData).to.not.have.property(\"password\");\r",
+									"    pm.expect(jsonData.username).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.userId).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData._links).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData._links).to.have.property(\"self\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/{{userId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Works by User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an empty array\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData).to.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/{{userId}}/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{userId}}",
+								"works"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Webhooks",
+			"item": [
+				{
+					"name": "Create Webhook",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const moment = require(\"moment\");\r",
+									"const jsonData = pm.response.json();\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"\r",
+									"pm.test(\"Should have status 201\", () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be created within last minute\", () => {\r",
+									"    const oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isAddedWithinLastMinute = moment(jsonData.addedDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isAddedWithinLastMinute).to.be.true\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be added by new user\", () => {\r",
+									"    pm.expect(jsonData.addedBy).to.equal(userId);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"callbackURL\": \"{{$randomUrl}}\",\r\n    \"event\": \"{{validWebhookEvent}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/webhooks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"webhooks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Webhook with bad event",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"callbackURL\": \"{{$randomUrl}}\",\r\n    \"event\": \"{{$randomNoun}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/webhooks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"webhooks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Webhook with bad callbackURL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"callbackURL\": \"bad\",\r\n    \"event\": \"newAuthor\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/webhooks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"webhooks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Webhook with bad params",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bad\": \"param\",\r\n    \"another\": \"bad\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/webhooks",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"webhooks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Works",
+			"item": [
+				{
+					"name": "Get Works",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an array of works\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"\r",
+									"    jsonData.forEach(work => {\r",
+									"        pm.expect(work).to.be.an(\"object\");\r",
+									"        pm.expect(work.workId).to.be.a(\"number\");\r",
+									"        pm.expect(work.genre).to.be.a(\"string\");\r",
+									"        pm.expect(work._links).to.have.property(\"self\");\r",
+									"    })\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Works by genre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const filteredGenre = pm.collectionVariables.get(\"validGenre\");\r",
+									"\r",
+									"pm.test(\"Should have status code 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an array\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should only have Works by filtered genre\", () => {\r",
+									"    jsonData.forEach(w => {\r",
+									"        pm.expect(w.genre).to.equal(filteredGenre);\r",
+									"    })\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/works?genre={{validGenre}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "{{validGenre}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Works by nonexistent genre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Should have status code 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an empty array\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData).to.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/works?genre=movies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "movies"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Work to be deleted and as duplicate reference",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const moment = require(\"moment\");\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"\r",
+									"pm.collectionVariables.set(\"workToDelete\", jsonData.workId);\r",
+									"pm.collectionVariables.set(\"duplicateTitle\", jsonData.title);\r",
+									"\r",
+									"pm.test(\"Should have status 201\", () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be added by new user id\", () => {\r",
+									"    pm.expect(jsonData.addedBy).to.equal(userId);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be added within last minute\", () => {\r",
+									"    oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isAddedWithinLastMinute = moment(jsonData.addedDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isAddedWithinLastMinute).to.be.true\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomLoremWord}} {{$timestamp}}\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"authorId\": {{validAuthorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Work with bad title",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"a\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"authorId\": {{validAuthorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create duplicate Work",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 409\", () => {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{duplicateTitle}}\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"authorId\": {{validAuthorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Work to be edited",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"const moment = require(\"moment\");\r",
+									"\r",
+									"pm.collectionVariables.set(\"workToEdit\", jsonData.workId);\r",
+									"\r",
+									"pm.test(\"Should have status 201\", () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be added by new user id\", () => {\r",
+									"    pm.expect(jsonData.addedBy).to.equal(userId);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be created within last minute\", () => {\r",
+									"    const oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isAddedWithinLastMinute = moment(jsonData.addedDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isAddedWithinLastMinute).to.be.true\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomLoremWord}} {{$timestamp}}\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"authorId\": {{validAuthorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Work with bad genre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomLoremWord}} {{$timestamp}}\",\r\n    \"genre\": \"Modern\",\r\n    \"authorId\": {{validAuthorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Work with bad Author",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status should be 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{$randomLoremWord}} {{$timestamp}}\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"authorId\": 25000\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Work",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 204\", () => {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/works/{{workToDelete}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works",
+								"{{workToDelete}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete nonexistent Work",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/works/{{workToDelete}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works",
+								"{{workToDelete}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Work",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"const moment = require(\"moment\");\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should contain updated object\", () => {\r",
+									"    pm.expect(jsonData.lastEditedBy).to.equal(userId);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be edited within last minute\", () => {\r",
+									"    const oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isEditedWithinLastMinute = moment(jsonData.lastEditedDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isEditedWithinLastMinute).to.be.true\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be edited by newly created user\", () => {\r",
+									"    pm.expect(jsonData.lastEditedBy).to.equal(userId);\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"workId\": {{workToEdit}},\r\n    \"title\": \"{{$randomLoremWord}} {{$timestamp}}\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"authorId\": {{validAuthorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works/{{workToEdit}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works",
+								"{{workToEdit}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Work excerpt",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const moment = require(\"moment\");\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should contain updated excerpt\", () => {\r",
+									"    pm.expect(jsonData.excerpt).to.equal(\"Cogito, ergo sum.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be edited within last minute\", () => {\r",
+									"    const oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isEditedWithinLastMinute = moment(jsonData.lastEditedDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isEditedWithinLastMinute).to.be.true\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be edited by newly created user\", () => {\r",
+									"    pm.expect(jsonData.lastEditedBy).to.equal(userId);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"workId\": {{workToEdit}},\r\n    \"title\": \"{{$randomLoremWord}} {{$timestamp}}\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"excerpt\": \"Cogito, ergo sum.\",\r\n    \"authorId\": {{validAuthorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works/{{workToEdit}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works",
+								"{{workToEdit}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit nonexistent Work",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"workId\": {{invalidWorkId}},\r\n    \"title\": \"{{$randomLoremWord}} {{$timestamp}}\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"authorId\": {{validAuthorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works/{{invalidWorkId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works",
+								"{{invalidWorkId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Work with mismatching Uri",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status should be 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"workId\": {{invalidWorkId}},\r\n    \"title\": \"{{$randomLoremWord}} {{$timestamp}}\",\r\n    \"genre\": \"{{validGenre}}\",\r\n    \"authorId\": {{validAuthorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/works/{{workToEdit}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works",
+								"{{workToEdit}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get edited Work",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an object\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/works/{{workToEdit}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"works",
+								"{{workToEdit}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Works by User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"const newWorkId = pm.collectionVariables.get(\"workToEdit\");\r",
+									"const newWork = jsonData.find(w => w.workId === newWorkId);\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an array\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should contain edited work\", () => {\r",
+									"    pm.expect(newWork).to.be.an(\"object\");\r",
+									"    pm.expect(newWork.addedBy).to.equal(userId);\r",
+									"    pm.expect(newWork.lastEditedBy).to.equal(userId);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/{{userId}}/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{userId}}",
+								"works"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Get Authors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an array of authors\", () => {\r",
+									"  pm.expect(jsonData).to.be.an(\"array\");\r",
+									"\r",
+									"    jsonData.forEach(author => {\r",
+									"        pm.expect(author).to.be.an(\"object\");\r",
+									"        pm.expect(author.authorId).to.be.a(\"number\");\r",
+									"        pm.expect(author.praenomen).to.be.a(\"string\");\r",
+									"        pm.expect(author.nomen).to.be.a(\"string\");\r",
+									"        pm.expect(author.cognomen).to.be.a(\"string\");\r",
+									"        pm.expect(author._links).to.have.property(\"self\");\r",
+									"})\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Authors by period",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const filteredPeriod = pm.collectionVariables.get(\"validPeriod\");\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an array with filtered Period\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"\r",
+									"    jsonData.forEach(w => {\r",
+									"        pm.expect(w.period).to.equal(filteredPeriod);\r",
+									"    })\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors?period={{validPeriod}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							],
+							"query": [
+								{
+									"key": "period",
+									"value": "{{validPeriod}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Authors by bad Period",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an empty array\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"    pm.expect(jsonData).to.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors?period=future",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							],
+							"query": [
+								{
+									"key": "period",
+									"value": "future"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Works by Author",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const authorId = parseInt(pm.collectionVariables.get(\"validAuthorId\"))\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an array with works by Author\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"\r",
+									"    jsonData.forEach(w => {\r",
+									"        pm.expect(w.authorId).to.equal(authorId);\r",
+									"    })\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors/{{validAuthorId}}/works",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"{{validAuthorId}}",
+								"works"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Author to be edited",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const moment = require(\"moment\");\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"\r",
+									"pm.collectionVariables.set(\"authorToEdit\", jsonData.authorId);\r",
+									"\r",
+									"pm.test(\"Should have status 201\", () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be added within last minute\", () => {\r",
+									"    const oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isAddedWithinLastMinute = moment(jsonData.addedDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isAddedWithinLastMinute).to.be.true\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be added by new user\", () => {\r",
+									"    pm.expect(jsonData.addedBy).to.equal(userId);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"praenomen\": \"{{$randomFirstName}}\",\r\n    \"nomen\": \"{{$randomLastName}}\",\r\n    \"cognomen\": \"{{$randomLastName}}\",\r\n    \"period\": \"{{validPeriod}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Author with short name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"praenomen\": \"M\",\r\n    \"nomen\": \"{{$randomLastName}}\",\r\n    \"cognomen\": \"{{$randomLastName}}\",\r\n    \"period\": \"{{validPeriod}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Author to be deleted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"const moment = require(\"moment\");\r",
+									"\r",
+									"pm.collectionVariables.set(\"authorToDelete\", jsonData.authorId);\r",
+									"pm.collectionVariables.set(\"authorToDeletePraenomen\", jsonData.praenomen);\r",
+									"pm.collectionVariables.set(\"authorToDeleteNomen\", jsonData.nomen);\r",
+									"pm.collectionVariables.set(\"authorToDeleteCognomen\", jsonData.cognomen);\r",
+									"\r",
+									"pm.test(\"Should have status 201\", () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be added within last minute\", () => {\r",
+									"    const oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isAddedWithinLastMinute = moment(jsonData.addedDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isAddedWithinLastMinute).to.be.true\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be added by new user\", () => {\r",
+									"    pm.expect(jsonData.addedBy).to.equal(userId);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"praenomen\": \"{{$randomFirstName}}\",\r\n    \"nomen\": \"{{$randomLastName}}\",\r\n    \"cognomen\": \"{{$randomLastName}}\",\r\n    \"period\": \"{{validPeriod}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create duplicate Author",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 409\", () => {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"praenomen\": \"{{authorToDeletePraenomen}}\",\r\n    \"nomen\": \"{{authorToDeleteNomen}}\",\r\n    \"cognomen\": \"{{authorToDeleteCognomen}}\",\r\n    \"period\": \"{{validPeriod}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Author with bad period",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"praenomen\": \"{{$randomFirstName}}\",\r\n    \"nomen\": \"{{$randomLastName}}\",\r\n    \"cognomen\": \"{{$randomLastName}}\",\r\n    \"period\": \"Modern\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Author",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 204\", () => {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors/{{authorToDelete}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"{{authorToDelete}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete nonexistent Author",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 404\", () => {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors/{{authorToDelete}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"{{authorToDelete}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Author",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const moment = require(\"moment\");\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"\r",
+									"pm.test(\"Should be edited within last minute\", () => {\r",
+									"    const oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isEditedWithinLastMinute = moment(jsonData.lastEditedDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isEditedWithinLastMinute).to.be.true\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be edited by newly created user\", () => {\r",
+									"    pm.expect(jsonData.lastEditedBy).to.equal(userId);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"authorId\": {{authorToEdit}},\r\n    \"praenomen\": \"{{$randomFirstName}}\",\r\n    \"nomen\": \"{{$randomLastName}}\",\r\n    \"cognomen\": \"{{$randomLastName}}\",\r\n    \"period\": \"{{validPeriod}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors/{{authorToEdit}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"{{authorToEdit}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Author's born and died date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const moment = require(\"moment\");\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"\r",
+									"pm.test(\"Should be edited within last minute\", () => {\r",
+									"    const oneMinuteAgo = moment().subtract(1,'minutes')\r",
+									"    const isEditedWithinLastMinute = moment(jsonData.lastEditedDate).isAfter(oneMinuteAgo)\r",
+									"\r",
+									"    pm.expect(isEditedWithinLastMinute).to.be.true\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should be edited by newly created user\", () => {\r",
+									"    pm.expect(jsonData.lastEditedBy).to.equal(userId);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should contain updated object\", () => {\r",
+									"    pm.expect(jsonData.born).to.include(\"300BCE\");\r",
+									"    pm.expect(jsonData.died).to.include(\"265BCE\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"authorId\": {{authorToEdit}},\r\n    \"praenomen\": \"{{$randomFirstName}}\",\r\n    \"nomen\": \"{{$randomLastName}}\",\r\n    \"cognomen\": \"{{$randomLastName}}\",\r\n    \"born\": \"300BCE\",\r\n    \"died\": \"265BCE\",\r\n    \"period\": \"{{validPeriod}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors/{{authorToEdit}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"{{authorToEdit}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Author with bad image URL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Should have status 400\", () => {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"authorId\": {{newlyCreatedAuthorToBeEdited}},\r\n    \"praenomen\": \"{{$randomFirstName}}\",\r\n    \"nomen\": \"{{$randomLastName}}\",\r\n    \"cognomen\": \"{{$randomLastName}}\",\r\n    \"period\": \"{{validPeriod}}\",\r\n    \"imageUrl\": \"{{$randomNoun}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/authors/{{authorToEdit}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"authors",
+								"{{authorToEdit}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Authors by User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"\r",
+									"pm.test(\"Should have status 200\", () => {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return an array with authors added by new user\", () => {\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"\r",
+									"    jsonData.forEach(w => {\r",
+									"        pm.expect(w.addedBy).to.equal(userId);\r",
+									"    })\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/users/{{userId}}/authors",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"{{userId}}",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://latin.sommarvind.tech"
+		},
+		{
+			"key": "password",
+			"value": "s$EmpCcF3@352Rpb"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "invalidWorkId",
+			"value": "250000"
+		},
+		{
+			"key": "validAuthorId",
+			"value": "2"
+		},
+		{
+			"key": "validGenre",
+			"value": "Commentaries"
+		},
+		{
+			"key": "validWebhookEvent",
+			"value": "NewAuthor"
+		},
+		{
+			"key": "validPeriod",
+			"value": "Old"
+		},
+		{
+			"key": "workToDelete",
+			"value": ""
+		},
+		{
+			"key": "workToEdit",
+			"value": ""
+		},
+		{
+			"key": "duplicateTitle",
+			"value": ""
+		},
+		{
+			"key": "authorToEdit",
+			"value": ""
+		},
+		{
+			"key": "authorToDelete",
+			"value": ""
+		},
+		{
+			"key": "authorToDeletePraenomen",
+			"value": ""
+		},
+		{
+			"key": "authorToDeleteNomen",
+			"value": ""
+		},
+		{
+			"key": "authorToDeleteCognomen",
+			"value": ""
+		},
+		{
+			"key": "username",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": ""
+		}
+	]
+}
