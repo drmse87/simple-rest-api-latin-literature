@@ -1,6 +1,6 @@
-# Latin Works and Authors REST API
+# Simple Web Api Latin Literature
 
-[ASP.NET Core WebAPI](https://asp.net) for Latin works and authors such as De Bello Gallico by Caesar and Cicero's Epistulae.
+Simple [ASP.NET Core WebAPI](https://asp.net) for Latin Literature.
 
 # Resources and endpoints
 
