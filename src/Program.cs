@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace simple_web_api_latin_literature
+namespace simple_rest_api_latin_literature
 {
     public class Program
     {

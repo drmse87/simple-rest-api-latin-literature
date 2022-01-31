@@ -17,7 +17,7 @@
 				"ASPNETCORE_ENVIRONMENT": "Development"
 			}
 		},
-		"simple_web_api_latin_literature": {
+		"simple_rest_api_latin_literature": {
 			"commandName": "Project",
 			"dotnetRunMessages": "true",
 			"launchBrowser": false,

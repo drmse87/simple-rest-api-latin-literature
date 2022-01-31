@@ -9,9 +9,9 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
 using System.Text.Json.Serialization;
-using simple_web_api_latin_literature.Models;
+using simple_rest_api_latin_literature.Models;
 
-namespace simple_web_api_latin_literature
+namespace simple_rest_api_latin_literature
 {
     public class Startup
     {

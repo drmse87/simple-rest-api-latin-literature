@@ -2,7 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System;
 
-namespace simple_web_api_latin_literature.Models
+namespace simple_rest_api_latin_literature.Models
 {
     public class Link
     {

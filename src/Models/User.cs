@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace simple_web_api_latin_literature.Models
+namespace simple_rest_api_latin_literature.Models
 {
     public class User
     {

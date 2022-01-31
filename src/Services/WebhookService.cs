@@ -1,4 +1,4 @@
-using simple_web_api_latin_literature.Models;
+using simple_rest_api_latin_literature.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 
-namespace simple_web_api_latin_literature
+namespace simple_rest_api_latin_literature
 {
     public class WebhookService : IWebhookService
     {

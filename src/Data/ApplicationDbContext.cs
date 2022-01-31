@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace simple_web_api_latin_literature.Data
+namespace simple_rest_api_latin_literature.Data
 {
     public class ApplicationDbContext : DbContext
     {

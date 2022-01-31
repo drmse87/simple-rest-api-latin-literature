@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System;
 using System.Web.Helpers;
 
-namespace simple_web_api_latin_literature.Models
+namespace simple_rest_api_latin_literature.Models
 {
     public class UserPostDTO
     {
