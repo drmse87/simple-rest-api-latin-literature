@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace web_api_assignment.Data
+namespace latin_web_api.Data
 {
     public class ApplicationDbContext : DbContext
     {

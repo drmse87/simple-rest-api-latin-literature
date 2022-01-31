@@ -1,7 +1,7 @@
-using web_api_assignment.Models;
+using latin_web_api.Models;
 using System.Threading.Tasks;
 
-namespace web_api_assignment
+namespace latin_web_api
 {
     public interface IWebhookService
     {

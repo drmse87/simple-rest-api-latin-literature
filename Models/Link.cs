@@ -2,7 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System;
 
-namespace web_api_assignment.Models
+namespace latin_web_api.Models
 {
     public class Link
     {

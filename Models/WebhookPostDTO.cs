@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System;
 
-namespace web_api_assignment.Models
+namespace latin_web_api.Models
 {
     public class WebhookPostDTO
     {

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Linq;
 
-namespace web_api_assignment
+namespace latin_web_api
 {
     public class JwtUserContext : IUserContextService  {
     private readonly IHttpContextAccessor _httpContext;

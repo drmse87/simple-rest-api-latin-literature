@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace web_api_assignment.Models
+namespace latin_web_api.Models
 {
     public class User
     {

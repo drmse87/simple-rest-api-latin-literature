@@ -1,4 +1,4 @@
-namespace web_api_assignment
+namespace latin_web_api
 {
     public interface IUserContextService 
     {

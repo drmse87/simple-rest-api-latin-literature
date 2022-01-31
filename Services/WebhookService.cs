@@ -1,4 +1,4 @@
-using web_api_assignment.Models;
+using latin_web_api.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 
-namespace web_api_assignment
+namespace latin_web_api
 {
     public class WebhookService : IWebhookService
     {

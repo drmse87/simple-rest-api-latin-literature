@@ -11,9 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using web_api_assignment.Models;
+using latin_web_api.Models;
 
-namespace web_api_assignment.Controllers
+namespace latin_web_api.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]

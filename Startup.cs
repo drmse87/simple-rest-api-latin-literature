@@ -9,9 +9,9 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
 using System.Text.Json.Serialization;
-using web_api_assignment.Models;
+using latin_web_api.Models;
 
-namespace web_api_assignment
+namespace latin_web_api
 {
     public class Startup
     {

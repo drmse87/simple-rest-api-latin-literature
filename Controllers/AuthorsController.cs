@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using web_api_assignment.Models;
+using latin_web_api.Models;
 
-namespace web_api_assignment.Controllers
+namespace latin_web_api.Controllers
 {
     [Authorize]
     [ApiController]
