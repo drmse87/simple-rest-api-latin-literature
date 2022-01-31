@@ -60,14 +60,14 @@ A new webhook can be created by POSTing to /api/v1/webhooks with the body parame
 
 The resources are currently represented in JSON format because the requests are sent with the Accept: application/json header. To allow other representations, the client should change the Accept header into Accept: application/xml (for XML), and then the API (depending on which framework is used and if this is done automatically or not) will represent (i.e. serialize) the resources accordingly.
 
-## Install
-
-The project requires a Secrets.json file in project root with the key "SecurityKey" as a JWT signing key.
-
-## Testing
-
-Testing can be performed by importing the Latin Works.postman_collection.json and running the collection runner.
-
 # Lessons learned
 
 In retrospect, I would have wanted to add more data to the database. I would also have wanted to add a /user endpoint to get the current user's document. I would also have wanted to add a /user/webhooks store, to get a list of the current user's webhooks. I would also have used ASP.NET's Webhooks instead of writing my own webhook functionality. Finally, for the mapping done in the static ToModel and FromModel methods, I would have wanted to use AutoMapper instead.
+
+## Testing
+
+Testing can be performed by importing the Latin Works.postman_collection.json and running the collection runner. Make sure the base_url variable is correct.
+
+## Install
+
+The project requires a Secrets.json file in project root with the key "SecurityKey" (used as JWT signing key).
